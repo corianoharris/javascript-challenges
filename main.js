@@ -29,25 +29,59 @@ const getLongestWordAnswer = () => {
 /**
  * Cornhole Challenge
  * valid points: 0, 1, 3
- * example score: [0, 3, 3, 1]
+ * example score: [0, 0, 0, 0]
+ *
+ * total score: 7
  */
 
-const cornholeBagsTossScore = [3, 3, 3, 3];
+const cornholeBagsTossScore = [1, 0, 3, 1, 0, 3, 3, 3, 3, 1];
+const addBagTossScore = (currentNumber, nextNumber) => {
+  return currentNumber + nextNumber;
+};
+const cornholeBagsTossTotalScore =
+  cornholeBagsTossScore.reduce(addBagTossScore);
+
+console.log(cornholeBagsTossTotalScore);
+
+// const checkCornholeScore = () => {
+//   let validTossPoint;
+//   //sorting the length of words in the array from highest to lowest
+//   for (let i = 0; i < cornholeBagsTossScore.length; i++) {
+//     if (cornholeBagsTossScore[i] - 3) {
+//       validTossPoint = true;
+//     } else if (cornholeBagsTossScore[i] - 1) {
+//       validTossPoint = true;
+//     } else if (cornholeBagsTossScore[i] - 0) {
+//       validTossPoint = true;
+//     } else validTossPoint = false;
+//   }
+//   return validTossPoint;
+// };
 
 const checkCornholeScore = () => {
   let validTossPoint;
   //sorting the length of words in the array from highest to lowest
-  for (let i = 0; i < cornholeBagsTossScore.length; i++) {
-    console.log(cornholeBagsTossScore[i]);
-    if (cornholeBagsTossScore[i] - 3) {
+  for (let i = 0; i < 1; i++) {
+    if (cornholeBagsTossTotalScore - 3) {
       validTossPoint = true;
-    } else if (cornholeBagsTossScore[i] - 1) {
+    } else validTossPoint = false;
+
+    if (cornholeBagsTossTotalScore - 1) {
       validTossPoint = true;
-    } else if (cornholeBagsTossScore[i] - 0) {
+    } else validTossPoint = false;
+
+    if (cornholeBagsTossTotalScore - 0) {
       validTossPoint = true;
     } else validTossPoint = false;
   }
-  return validTossPoint;
+
+  if (cornholeBagsTossTotalScore === 21) {
+    let total;
+    total = "You won!";
+  } else {
+    total = "You haven't won yet.";
+  }
+  return `${validTossPoint}: Total points: ${cornholeBagsTossTotalScore}: ${total}`;
 };
 
 const isCornholeScoreValid = () => {
