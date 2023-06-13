@@ -57,3 +57,49 @@ const isCornholeScoreValid = () => {
 };
 
 // ===================================
+
+/**
+ * Display current, next, and past array objects Challenge
+ */
+
+const objects = [
+  { id: 1, name: "Object 1" },
+  { id: 2, name: "Object 2" },
+  { id: 3, name: "Object 3" },
+  { id: 4, name: "Object 4" },
+  { id: 5, name: "Object 5" },
+  { id: 6, name: "Object 6" },
+  { id: 7, name: "Object 7" },
+  { id: 8, name: "Object 8" },
+  { id: 9, name: "Object 9" },
+  { id: 10, name: "Object 10" },
+];
+
+let currentIndex = 0;
+
+function displayCurrentIndex() {
+  const result = document.querySelector(
+    "#display-current-next-past-array-object-answer"
+  );
+  const answer = objects[currentIndex].name;
+  result.textContent = `Answer: ${answer}`;
+}
+
+function nextIndex() {
+  if (currentIndex + 1 < objects.length) {
+    currentIndex++;
+    displayCurrentIndex();
+  }
+}
+
+function previousIndex() {
+  if (currentIndex - 1 >= 0) {
+    currentIndex--;
+    displayCurrentIndex();
+  }
+}
+
+// // Display the first index
+displayCurrentIndex();
+
+// ===================================
